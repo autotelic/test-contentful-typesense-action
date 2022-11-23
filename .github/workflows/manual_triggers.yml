@@ -1,0 +1,13 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  manual_workflows:
+    runs-on: ubuntu-latest
+    name: Manual Typesense actions using Contentful instance
+    steps:
+      - uses: autotelic/contentful-typesense@v0.1.0
+        with:
+          contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
+          typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          contentfulSpaceId: opxulaoc9o1m
