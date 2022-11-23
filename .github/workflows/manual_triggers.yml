@@ -1,22 +1,29 @@
-name: Typesense bulk action
+name: Recreate collections and indexes
 
 on:
   workflow_dispatch:
-    inputs:
-      typesenseAction:
-        type: choice
-        description: Typesense bulk action
-        options:
-        - dropAndCreateCollections
-        - bulkIndexing
 
 jobs:
-  manual_workflows:
+  dropAndCreateCollections:
     runs-on: ubuntu-latest
-    name: Manual Typesense actions using Contentful instance
+    name: Drop and re-create Typesense collections
     steps:
-      - uses: autotelic/contentful-typesense@v0.2.0
+      - uses: autotelic/contentful-typesense@v0.3.0
         with:
           contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
           typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
           contentfulSpaceId: opxulaoc9o1m
+          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
+          typesenseAction: dropAndCreateCollections
+
+  reIndex:
+    runs-on: ubuntu-latest
+    name: Re-index contentful data into Typesense
+    steps:
+      - uses: autotelic/contentful-typesense@v0.3.0
+        with:
+          contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
+          typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          contentfulSpaceId: opxulaoc9o1m
+          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
+          typesenseAction: bulkIndexing
