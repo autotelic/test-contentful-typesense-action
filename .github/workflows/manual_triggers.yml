@@ -1,3 +1,5 @@
+name: Typesense bulk action
+
 on:
   workflow_dispatch:
     inputs:
