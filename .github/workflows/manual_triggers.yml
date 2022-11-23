@@ -1,11 +1,12 @@
 on:
   workflow_dispatch:
     inputs:
-      type: choice
-      description: Typesense bulk action
-      options:
-      - dropAndCreateCollections
-      - bulkIndexing
+      typesenseAction:
+        type: choice
+        description: Typesense bulk action
+        options:
+        - dropAndCreateCollections
+        - bulkIndexing
 
 jobs:
   manual_workflows:
