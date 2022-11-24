@@ -9,6 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: autotelic/setup-contentful@main
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
       - run: contentful --version
 
   # dropAndCreateCollections:
