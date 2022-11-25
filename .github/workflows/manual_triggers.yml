@@ -15,28 +15,12 @@ jobs:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           version: v1.16.7
       - run: sudo chmod a+x ${{ steps.setupContentful.outputs.contentfulPath }}/contentful
-      - run: contentful --version
-
-  # dropAndCreateCollections:
-  #   runs-on: ubuntu-latest
-  #   name: Drop and re-create Typesense collections
-  #   steps:
-  #     - uses: autotelic/contentful-typesense@main
-  #       with:
-  #         contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
-  #         typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
-  #         contentfulSpaceId: opxulaoc9o1m
-  #         typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
-  #         typesenseAction: dropAndCreateCollections
-
-  # reIndex:
-  #   runs-on: ubuntu-latest
-  #   name: Re-index contentful data into Typesense
-  #   steps:
-  #     - uses: autotelic/contentful-typesense@v0.3.0
-  #       with:
-  #         contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
-  #         typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
-  #         contentfulSpaceId: opxulaoc9o1m
-  #         typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
-  #         typesenseAction: bulkIndexing
+      - name: Bulk indexing
+        id: bulkIndexing
+        uses: autotelic/contentful-typesense@main
+        with:
+          contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
+          typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          contentfulSpaceId: opxulaoc9o1m
+          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
+          typesenseAction: bulkIndexing
