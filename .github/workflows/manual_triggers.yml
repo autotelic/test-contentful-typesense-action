@@ -13,7 +13,7 @@ jobs:
         uses: autotelic/setup-contentful@main
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - run: sudo a+x ${{ steps.setupContentful.outputs.contentfulPath }}
+      - run: sudo chmod a+x ${{ steps.setupContentful.outputs.contentfulPath }}
       - run: contentful --version
 
   # dropAndCreateCollections:
