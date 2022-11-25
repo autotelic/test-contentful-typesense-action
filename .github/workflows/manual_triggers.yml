@@ -17,7 +17,7 @@ jobs:
       - run: sudo chmod a+x ${{ steps.setupContentful.outputs.contentfulPath }}/contentful
       - name: Bulk indexing
         id: bulkIndexing
-        uses: autotelic/contentful-typesense@main
+        uses: autotelic/contentful-typesense@v0.6.0
         with:
           contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
           typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
