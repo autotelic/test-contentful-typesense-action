@@ -1,10 +1,10 @@
-name: Recreate collections and indexes
+name: Bulk indexing
 
 on:
   workflow_dispatch:
 
 jobs:
-  installContentful:
+  bulkIndexing:
     name:
     runs-on: ubuntu-latest
     steps:
