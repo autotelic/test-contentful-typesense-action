@@ -1,0 +1,20 @@
+name: Update index
+
+on:
+  repository_dispatch:
+    types: [contentful_webhook]
+
+jobs:
+  updateIndex:
+    name:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Update index
+        id: updateIndex
+        uses: autotelic/contentful-typesense@main
+        with:
+          contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
+          typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
+          contentfulSpaceId: opxulaoc9o1m
+          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
