@@ -1,11 +1,11 @@
-name: Bulk indexing
+name: Bulk indexing staging
 
 on:
   workflow_dispatch:
 
 jobs:
   bulkIndexing:
-    name:
+    name: Bulk update of staging index from contentful
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -25,3 +25,4 @@ jobs:
           contentfulSpaceId: opxulaoc9o1m
           typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
           typesenseAction: bulkIndexing
+          includeDrafts: true

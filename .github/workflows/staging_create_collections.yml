@@ -1,20 +1,21 @@
-name: Update index
+name: Drop and create collections on staging
 
 on:
-  repository_dispatch:
-    types: [contentful_webhook]
+  workflow_dispatch:
 
 jobs:
-  updateIndex:
-    name:
+  dropAndCreateCollections:
+    name: Drop and create collections on staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Update index
-        id: updateIndex
+      - name: Drop and create collections
+        id: dropAndCreateCollections
         uses: autotelic/contentful-typesense@main
         with:
           contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
           typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
           contentfulSpaceId: opxulaoc9o1m
           typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
+          typesenseAction: dropAndCreateCollections
+          includeDrafts: true
