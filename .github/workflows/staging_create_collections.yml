@@ -20,4 +20,4 @@ jobs:
           typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
           typesenseAction: dropAndCreateCollections
           includeDrafts: true
-          contentTypeMappingsPath: '${{ env.GITHUB_WORKSPACE }}/contentTypeMappings.js'
+          contentTypeMappingsPath: '${{ github.workspace }}/contentTypeMappings.js'
