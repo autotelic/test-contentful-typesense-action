@@ -1,13 +1,13 @@
-name: Bulk indexing staging
+name: Bulk indexing prod
 
 on:
   workflow_dispatch:
 
 jobs:
   bulkIndexing:
-    name: Bulk update of staging index from contentful
+    name: Bulk update of prod index from contentful
     runs-on: ubuntu-latest
-    environment: staging
+    environment: production
     steps:
       - uses: actions/checkout@v3
       - name: Setup contentful
@@ -24,6 +24,6 @@ jobs:
           contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
           typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
           contentfulSpaceId: opxulaoc9o1m
-          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
+          typesenseUrl: https://6dk804acb3pntfy1p-1.a1.typesense.net
           typesenseAction: bulkIndexing
-          includeDrafts: true
+          includeDrafts: false

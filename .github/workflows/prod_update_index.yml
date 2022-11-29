@@ -1,14 +1,14 @@
-name: Update index from webhook on staging
+name: Update index from webhook on prod
 
 on:
   repository_dispatch:
-    types: [contentful_webhook_staging]
+    types: [contentful_webhook_prod]
 
 jobs:
   updateIndex:
-    name: Update staging index from contentful
+    name: Update prod index from contentful
     runs-on: ubuntu-latest
-    environment: staging
+    environment: production
     steps:
       - uses: actions/checkout@v3
       - name: Update index
@@ -18,5 +18,5 @@ jobs:
           contentManagementToken: ${{ secrets.CONTENFUL_CMA_KEY }}
           typesenseAdminApiKey: ${{ secrets.TYPESENSE_ADMIN_API_KEY }}
           contentfulSpaceId: opxulaoc9o1m
-          typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
-          includeDrafts: true
+          typesenseUrl: https://6dk804acb3pntfy1p-1.a1.typesense.net
+          includeDrafts: false
