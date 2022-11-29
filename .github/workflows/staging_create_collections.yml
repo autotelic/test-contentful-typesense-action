@@ -9,15 +9,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     steps:
-      - name: Dump GitHub context
-        id: github_context_step
-        run: echo '${{ toJSON(github) }}'
-      - name: Dump job context
-        run: echo '${{ toJSON(job) }}'
-      - name: Dump steps context
-        run: echo '${{ toJSON(steps) }}'
-      - name: Dump runner context
-        run: echo '${{ toJSON(runner) }}'
       - uses: actions/checkout@v3
       - name: Drop and create collections
         id: dropAndCreateCollections
@@ -29,4 +20,4 @@ jobs:
           typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
           typesenseAction: dropAndCreateCollections
           includeDrafts: true
-          contentTypeMappingsPath: contentTypeMappings.js
+          contentTypeMappingsPath: '${{ env.GITHUB_WORKSPACE }}/contentTypeMappings.js'
