@@ -6,7 +6,7 @@ const contentTypeMappings = {
     ],
     fieldMappings: {
       locations: (fields, locale, allEntities) => {
-        console.log(fields, locale, allEntities)
+        // console.log(fields, locale, allEntities)
         const { propertyBuilding: buildings } = fields
         const buildingEntities = allEntities['building']
         if (buildings === undefined) return []
