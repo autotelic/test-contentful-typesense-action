@@ -6,6 +6,7 @@ const contentTypeMappings = {
     ],
     fieldMappings: {
       locations: (document, allEntities, locale) => {
+        console.log(document, allEntities, locale)
         const { fields } = document
         const { propertyBuilding: buildings } = fields
         const buildingEntities = allEntities['building']
