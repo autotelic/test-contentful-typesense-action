@@ -5,9 +5,8 @@ const contentTypeMappings = {
       { name: 'locations', type: 'geopoint[]' }
     ],
     fieldMappings: {
-      locations: (document, allEntities, locale) => {
-        console.log(document, allEntities, locale)
-        const { fields } = document
+      locations: (fields, locale, allEntities) => {
+        console.log(fields, locale, allEntities)
         const { propertyBuilding: buildings } = fields
         const buildingEntities = allEntities['building']
         if (buildings === undefined) return []
