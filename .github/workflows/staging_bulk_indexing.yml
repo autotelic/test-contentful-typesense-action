@@ -27,3 +27,4 @@ jobs:
           typesenseUrl: https://3dkfm1xc8uen7v4rp-1.a1.typesense.net
           typesenseAction: bulkIndexing
           includeDrafts: true
+          contentTypeMappingsPath: '${{ github.workspace }}/contentTypeMappings.js'
